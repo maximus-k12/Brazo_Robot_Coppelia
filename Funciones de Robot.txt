@@ -1,0 +1,24 @@
+simSetThreadSwitchTiming(2) --Default timing for thread switching
+simDelegateChildScriptExecution()
+
+
+
+
+target=simGetObjectAssociatedWithScript(sim_handle_self)
+path=simGetObjectHandle('Path')
+for i=1,1 do
+	simFollowPath(target,path,1,0,0.2,0.5)
+end
+
+
+
+
+
+res,retInts,retFloats,retStrings,retBuffer=sim.simxCallScriptFunction(clientID,"target",sim.sim_scripttype_childscript,"mover_caja1_morada",[1],[],[],inputBuffer,sim.simx_opmode_blocking)
+
+
+%----------------------------------------------------------------------------
+function mover_caja1_roja(inInts,inFloats,inStrings,inBuffer)
+    move_to_box1=inInts[1]
+    return {},{},{},''
+end
